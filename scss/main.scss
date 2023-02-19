@@ -1,0 +1,18 @@
+@import 'partials/draggableItem';
+@import 'partials/expo-menu';
+@import 'partials/context-menu';
+@import 'partials/expo-canvas';
+
+.editor-styles-wrapper:has(.expo-root) {
+  padding: 0 1em !important;
+}
+
+.expo-root {
+  max-width: unset;
+
+  gap: 1em;
+
+  position: relative;
+  display: flex;
+  overflow: auto;
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "webmodu/expo",
+  "title": "Expo",
+  "attributes": {
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "x": 1,
+          "y": 1,
+          "w": 4,
+          "h": 2,
+          "z": 100,
+          "contentType": "image",
+          "content": "https://via.placeholder.com/550/250"
+        }
+      ]
+    },
+    "canvasHeight": {
+      "type": "number",
+      "default": 30
+    },
+    "canvasWidth": {
+      "type": "number",
+      "default": 20
+    },
+    "gridSize": {
+      "type": "number",
+      "default": 25
+    }
+  },
+  "description": "Klik-en-sleep component om exposities vrij in te delen",
+  "editorScript": "file:./build/index.js",
+  "style": "file:./build/index.css",
+  "render": "file:./partials/expo-frontend.php"
+}

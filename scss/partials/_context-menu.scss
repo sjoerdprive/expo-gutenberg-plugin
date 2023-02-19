@@ -1,0 +1,12 @@
+.context-menu {
+  position: absolute;
+  z-index: 1000;
+  opacity: 1;
+
+  transition: opacity 0.1s linear;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
