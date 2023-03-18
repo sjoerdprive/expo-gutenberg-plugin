@@ -2,7 +2,8 @@ import { MediaUpload } from '@wordpress/block-editor';
 import { Button } from '@wordpress/components';
 import classNames from 'classnames';
 import { addFilter } from '@wordpress/hooks';
-import MyMediaUploader from './../mediaUpload';
+import MyMediaUploader from './mediaUpload';
+import { useCanvas } from './canvasContext';
 
 const replaceMediaUpload = () => MediaUpload;
 
@@ -12,23 +13,28 @@ addFilter(
   replaceMediaUpload
 );
 
-export default function ContextMenu({
-  position,
-  onUpload,
-  placeText,
-  toggleGrid,
-  isGridVisible,
-  hideContextMenu,
-  visible,
-}) {
-  const { x, y } = position;
+export default function ContextMenu() {
+  const {
+    menuPos,
+    uploadImage,
+    placeText,
+    toggleGrid,
+    isGridVisible,
+    hideContextMenu,
+    isContextMenuVisible,
+  } = useCanvas();
+
+  const { x, y } = menuPos;
 
   return (
     <div
-      className={classNames('context-menu', visible ? 'visible' : 'hidden')}
+      className={classNames(
+        'context-menu',
+        isContextMenuVisible ? 'visible' : 'hidden'
+      )}
       style={{ left: x + 10, top: y + 10 }}
     >
-      <MyMediaUploader onUpload={onUpload} />
+      <MyMediaUploader onUpload={uploadImage} />
       <Button
         icon={'editor-textcolor'}
         showTooltip

@@ -5,6 +5,7 @@
 
 .editor-styles-wrapper:has(.expo-root) {
   padding: 0 1em !important;
+  margin: 0 auto;
 }
 
 .expo-root {
@@ -14,5 +15,7 @@
 
   position: relative;
   display: flex;
+  flex-wrap: wrap;
+  // grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   overflow: auto;
 }

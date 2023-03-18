@@ -1,17 +1,19 @@
 import classNames from 'classnames';
+import { useRef } from '@wordpress/element';
+import { useCanvas } from './canvasContext';
+import ContextMenu from './contextMenu';
 
-export default function Grid({
-  children,
-  gridSize,
-  canvasWidth,
-  canvasHeight,
-  grid,
-  mouseState,
-  cellState,
-  isGridVisible,
-  hideContextMenu,
-  showContextMenu,
-}) {
+export default function Grid({ children, isGridVisible }) {
+  const {
+    canvasHeight,
+    canvasWidth,
+    mouseState,
+    gridSize,
+    cellState,
+    hideContextMenu,
+    showContextMenu,
+  } = useCanvas();
+  const grid = useRef();
   const [mousePos, setMousePos] = mouseState;
   const [targetCell, setTargetCell] = cellState;
 
@@ -65,10 +67,12 @@ export default function Grid({
         trackDrag(e);
       }}
       onContextMenu={handleContextMenu}
-      className="grid expo-canvas"
+      className="grid "
       style={{
         gridTemplateColumns: `repeat(${canvasWidth}, ${gridSize}px)`,
         gridTemplateRows: `repeat(${canvasHeight}, ${gridSize}px)`,
+        width: `${gridSize * canvasWidth}px`,
+        height: `${gridSize * canvasHeight}px`,
       }}
     >
       <div
@@ -78,6 +82,7 @@ export default function Grid({
           backgroundSize: `${gridSize}px`,
         }}
       ></div>
+      <ContextMenu />
       {children}
     </div>
   );

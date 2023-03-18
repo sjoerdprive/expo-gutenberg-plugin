@@ -1,15 +1,23 @@
 .expo-canvas {
-  position: relative;
+  .grid {
+    position: relative;
+    display: grid;
 
-  display: grid;
+    overflow: hidden;
+    margin: 0 auto;
+  }
 
-  flex: 0 0 auto;
-  margin: 0 auto;
+  width: 100%;
 
-  width: fit-content;
-  height: fit-content;
-
-  overflow: hidden;
+  @media (max-width: 600px) {
+    .grid {
+      display: flex;
+      flex-direction: column;
+      width: 100% !important;
+      gap: 1rem;
+      height: fit-content !important;
+    }
+  }
 
   &,
   * {

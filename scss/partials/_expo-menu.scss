@@ -1,27 +1,13 @@
-.expo-menu {
-  transition: opacity 0.1s linear;
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+.menu-section {
+  flex: 1 0 300px;
+  padding: 1rem;
 
   position: sticky;
   z-index: 1000;
   background-color: #fffc !important;
   left: 0;
-  top: 0;
 
   min-height: fit-content;
-
-  opacity: 0;
-
-  flex: 0 0 300px;
-  pointer-events: none;
-
-  &.active {
-    opacity: 1;
-    pointer-events: all;
-  }
 
   .prop-control {
     margin-bottom: 1em;

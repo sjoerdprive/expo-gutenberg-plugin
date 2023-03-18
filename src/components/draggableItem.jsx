@@ -1,11 +1,10 @@
 import { useState, useRef, useEffect } from '@wordpress/element';
 import classNames from 'classnames';
 import { Button } from '@wordpress/components';
+import { useCanvas } from './canvasContext';
 
 const DraggableItem = ({
   initItem,
-  mouseState,
-  cellState,
   onDragEnd,
   onDragStart,
   onChange,
@@ -14,7 +13,8 @@ const DraggableItem = ({
   isDragging,
 }) => {
   const ref = useRef();
-  const { x, y, w, h, z, content, contentType } = initItem;
+  const { mouseState, cellState } = useCanvas();
+  const { x, y, w, h, z, content, contentType, order } = initItem;
   const [mousePos, setMousePos] = mouseState;
   const [targetCell, setTargetCell] = cellState;
   const [editableText, setEditableText] = useState(content);
@@ -76,6 +76,7 @@ const DraggableItem = ({
         gridColumn: `${x} / span ${w}`,
         gridRow: `${y} / span ${h}`,
         zIndex: z,
+        order: order,
       }}
       draggable
       onDragStart={handleDragStart}
